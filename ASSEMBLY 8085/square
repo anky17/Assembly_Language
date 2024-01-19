@@ -1,0 +1,14 @@
+LDA 9000H ; Load the number into A
+MOV B, A ; MOVE CONTENT OF A TO B FOR COUNTER
+MOV D,A ; MOVE CONTENT OF A TO D FOR REPEATED ADD
+MVI A,00H ; A=0
+MVI E,00H ; FOR CARRY
+UP:
+ADD D ; Multiply A by B
+JNC DOWN
+INR E
+DOWN:
+DCR B
+JNZ UP
+STA 9100H ; Store the result in memory location 9100H
+HLT ; Halt the program
